@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/chat_nav_graph"
+    app:startDestination="@id/latestChatsFragment">
+
+    <fragment
+        android:id="@+id/latestChatsFragment"
+        android:name="com.example.chat.fragments.LatestChatsFragment"
+        android:label="fragment_latest_chats"
+        tools:layout="@layout/fragment_latest_chats" >
+        <action
+            android:id="@+id/action_latestChatsFragment_to_allUsersFragment"
+            app:destination="@id/allUsersFragment" />
+        <action
+            android:id="@+id/action_latestChatsFragment_to_chatUserFragment"
+            app:destination="@id/chatUserFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/allUsersFragment"
+        android:name="com.example.chat.fragments.AllUsersFragment"
+        android:label="fragment_all_users"
+        tools:layout="@layout/fragment_all_users" >
+        <action
+            android:id="@+id/action_allUsersFragment_to_chatUserFragment"
+            app:destination="@id/chatUserFragment" />
+        <argument
+            android:name="currentUser"
+            app:argType="com.example.chat.models.User" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatUserFragment"
+        android:name="com.example.chat.chatUserFragment"
+        android:label="fragment_chat_user"
+        tools:layout="@layout/fragment_chat_user" >
+        <argument
+            android:name="chatUser"
+            app:argType="com.example.chat.models.User" />
+        <argument
+            android:name="currentUser"
+            app:argType="com.example.chat.models.User" />
+    </fragment>
+</navigation>
